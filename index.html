@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery-3.2.0.js"></script>
+	<style type="text/css">
+		.btn{
+			margin-right: 5px;
+		}
+		.active{
+			background: pink;
+			transition: 1s;
+		}
+		.list{
+			width: 200px;
+			height: 200px;
+			list-style: none;
+			margin-left: -40px;
+			overflow: hidden;
+		}
+		.item{
+			width: 198px;
+			height: 198px;
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" class="btn" name="" value="按钮1">
+	<input type="button" class="btn" name="" value="按钮2">
+	<input type="button" class="btn" name="" value="按钮3">
+	<ul class="list">
+		<li class="item">111</li>
+		<li class="item">222</li>
+		<li class="item">33</li>
+	</ul>
+
+	<!-- 选项卡有好几种方法 -->
+	<script type="text/javascript">
+		// 获取到所有的btn按钮
+		var btn = document.querySelectorAll('.btn');
+		// 获取到所有的li
+		var lis = document.querySelectorAll('.item');
+		// 1.循环每一个btn按钮
+		for(var i=0;i<btn.length;i++){
+			// 5.给btn添加一个自定义属性，并将index的值设置为i
+			btn[i].index = i;
+			// 2.点击每一个btn按钮
+			btn[i].onclick = function (){	
+				// 3.在这的i是3，所有要在重新循环每一个btn按钮
+				for(var i=0;i<btn.length;i++){
+					// 4.把所有的btn按钮的class清空和li的隐藏
+					btn[i].className='';
+					lis[i].style.display = 'none'
+				}
+				// 6.给当的按钮添加class‘active’，让当前点击的btn相应的li显示
+				this.className = 'active';
+				lis[this.index].style.display = 'block';//this.index 就是li
+			}
+		}
+		
+	</script>
+</body>
+</html>
